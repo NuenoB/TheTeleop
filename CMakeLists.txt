@@ -52,8 +52,6 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
    boton_data.msg
-#   Message1.msg
-#   Message2.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -74,8 +72,7 @@ add_message_files(
 generate_messages(
    DEPENDENCIES
    std_msgs  # Or other packages containing msgs
-#   time
-#   key
+   #genpy
 )
 
 ################################################

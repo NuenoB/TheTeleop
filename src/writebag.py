@@ -11,15 +11,21 @@ from rqt_TheTeleop.msg import boton_data
 def store(dict, name_archive="test"):
 	bag = rosbag.Bag(name_archive + ".bag", 'w')
 	try:
-		t = 0
+		t = 1
 		for key in dict.keys():
 			topic = dict[key][topic_index]
 			msg = dict[key][msg_index]
 			rate = dict[key][rate_index]
 			strr = str(key)
+			print key 
+			print msg
 			st= boton_data(strr,rate)
+			#print strr
+			#print st
+			#print genpy.Time(t,0)
+			#print genpy.Time(t,1) 
 			bag.write(topic,msg,genpy.Time(t,0))
-			bag.write(topic,st,genpy.Time(t,1))
+			bag.write("/test",st,genpy.Time(t,1))
 			t = t+1
 	finally:
 		bag.close()

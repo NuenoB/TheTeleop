@@ -1,5 +1,6 @@
 
 import rosbag
+from rqt_TheTeleop.msg import boton_data
 
 # saber los tipos
 #types = []
@@ -20,21 +21,23 @@ def restore(name_bag = "test"):
 	lmsg = dict()
 	trios  = bag.read_messages()
 	#print bag.get_message_count();
-	while True:
-		try:
-			temp = trios.next()
-		except Exception, e:
-			break
+	#while True:
+		#try:
+		#	temp = trios.next()
+		#except Exception, e:
+		#	break
 		
-		topic = temp[topic_index]
-		print topic 
-		msg = temp[msg_index]
-		print msg 
-		temp = trios.next()
-		key = temp[msg_index].data.key
-        lmsg[key]=[topic,msg,t,var[topic][0]]
+		#print temp[msg_index]
+	for topic, msg, t in bag.read_messages():
+		print msg
+		#topic = temp[topic_index]
+		#print topic 
+		#msg = temp[msg_index]
+		#print msg 
+		#temp = trios.next()
+		#key = temp[msg_index].data.key
+        #lmsg[key]=[topic,msg,t,var[topic][0]]
 	bag.close()
 
 	return lmsg
-
-print restore()
+restore()
