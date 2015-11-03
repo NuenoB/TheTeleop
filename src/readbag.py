@@ -1,4 +1,5 @@
 
+import rospy
 import rosbag
 from rqt_TheTeleop.msg import boton_data
 
@@ -20,24 +21,27 @@ def restore(name_bag = "test"):
 	#print bag.get_type_and_topic_info()
 	lmsg = dict()
 	trios  = bag.read_messages()
-	#print bag.get_message_count();
-	#while True:
-		#try:
-		#	temp = trios.next()
-		#except Exception, e:
-		#	break
-		
-		#print temp[msg_index]
-	for topic, msg, t in bag.read_messages():
-		print msg
-		#topic = temp[topic_index]
-		#print topic 
-		#msg = temp[msg_index]
-		#print msg 
-		#temp = trios.next()
-		#key = temp[msg_index].data.key
-        #lmsg[key]=[topic,msg,t,var[topic][0]]
-	bag.close()
+	rospy.loginfo(bag.get_message_count())
+	#for topic, msg, t in bag.read_messages():
+	#	print msg
+	while True:
+		try:
+			temp = trios.next()
+			topic = temp[topic_index]
+			msg = temp[msg_index]
+			#print topic 
+			#print msg 
+			temp = trios.next()
+			key = temp[msg_index].key1
+			#print "key" + key
+			t = temp[msg_index].time
+			lmsg[key]=[topic,msg,t,var[topic][0]]
+			#print len(lmsg)
+		except Exception, e:
+			rospy.loginfo("end of restore")
+			break
 
+
+	bag.close()
+	print len(lmsg)
 	return lmsg
-restore()

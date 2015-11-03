@@ -17,8 +17,8 @@ def store(dict, name_archive="test"):
 			msg = dict[key][msg_index]
 			rate = dict[key][rate_index]
 			strr = str(key)
-			print key 
-			print msg
+			#print key 
+			#print msg
 			st= boton_data(strr,rate)
 			#print strr
 			#print st
@@ -36,4 +36,5 @@ ls3=["/odom",Twist(),genpy.Time(3,1),Twist()]
 ls4=["/odom",Twist(),genpy.Time(3,1),Twist()]
 ls5=["/odom",Twist(),genpy.Time(3,1),Twist()]
 store_dict=dict([("1",ls),("2",ls2),("3",ls3),("4",ls4),("5",ls5)])
+
 store(store_dict, "test")	
