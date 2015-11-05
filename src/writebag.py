@@ -30,11 +30,10 @@ def store(dict, name_archive="test"):
 	finally:
 		bag.close()
 
-ls=["/odom",Twist(),genpy.Time(1,0),Twist()]
-ls2=["/odom",Twist(),genpy.Time(2,2),Twist()]
-ls3=["/odom",Twist(),genpy.Time(3,1),Twist()]
-ls4=["/odom",Twist(),genpy.Time(3,1),Twist()]
-ls5=["/odom",Twist(),genpy.Time(3,1),Twist()]
+ls=["/odom",Twist(),genpy.Time(1,0),Twist]
+ls2=["/odom",Twist(),genpy.Time(2,2),Twist]
+ls3=["/odom",Twist(),genpy.Time(3,1),Twist]
+ls4=["/odom",Twist(),genpy.Time(3,1),Twist]
+ls5=["/odom",Twist(),genpy.Time(3,1),Twist]
 store_dict=dict([("1",ls),("2",ls2),("3",ls3),("4",ls4),("5",ls5)])
-
-store(store_dict, "test")	
+store(store_dict, "test")

@@ -2,6 +2,7 @@
 
 import rospy
 from std_msgs.msg import String
+import roslib
 
 
 def sender(msg,reciver, msg_type):
@@ -10,12 +11,13 @@ def sender(msg,reciver, msg_type):
 	#
 	#rospy.init_node('sender', anonymous=True)
 	#rospy.loginfo("sender " + reciver)
-	pub = rospy.Publisher(reciver, msg_type , queue_size=0)
+	msg_class = roslib.message.get_message_class(msg_type)
+	pub = rospy.Publisher(reciver, msg_class , queue_size=0)
 	#rospy.loginfo(msg)
 	rate = rospy.Rate(10)
 	x=0
 	while x<2 :
-		pub.publish( str(x) + " " + msg)
+		pub.publish(msg)
 		rate.sleep()
 		x=x+1
 	#rospy.loginfo("sended ")

@@ -1,17 +1,13 @@
-
+#! /usr/bin/env python
 import rospy
 import rosbag
 from rqt_TheTeleop.msg import boton_data
-
+from config_index import *
 # saber los tipos
 #types = []
 #for i in range(0,len(bag.get_type_and_topic_info()[1].values())):
 #	types.append(bag.get_type_and_topic_info()[1].values()[i][0])
 
-topic_index=0
-msg_index=1
-rate_index=2
-type_index=4
 
 
 def restore(name_bag = "test"):
