@@ -24,8 +24,25 @@ def newGetKey():
 def getkey(arg =""):
 	return input(arg)
 
-def getLine(arg =""):
-	return input(arg)
+def getLine():
+	result = ""
+	next=1
+	while next:
+		settings = termios.tcgetattr(sys.stdin)
+		tty.setraw(sys.stdin.fileno())
+		#rlist, _, _ = select.select([sys.stdin], [], [], 5.0)#esperar
+		#if rlist:
+		key = sys.stdin.read(1)	
+		#else:
+		#	key = ''
+		#finally:
+		print key
+		result = result + key
+		if (key == ""):
+			next = 0
+
+	termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+	return key
 
 
 def main():
@@ -33,7 +50,7 @@ def main():
 	rospy.init_node('The_Teleop')
 	print "welcome to teleop"
 	#robot_name = str(input("set robot"))
-	robot_name ="test"
+	robot_name ="tes1"
 	robot_setting = restore(robot_name) 
 	reconfig_key="r"
 	store_key ="s"
@@ -71,7 +88,8 @@ def lookup(dictio,key):
 
 def reconfig(dictio):
 	print dictio
-	key = getkey("choose a option: a -> addCommand, c -> changeCommand, d->deleteComannd")
+	print "choose a option: a -> addCommand, c -> changeCommand, d->deleteComannd"
+	key = newGetKey()
 	if (key=="d"):
 		print "delete"
 		dictio = borrar(dictio)
@@ -86,15 +104,21 @@ def reconfig(dictio):
 
 
 def agregar(dictio):
-	key = getkey("a key pliss")
-	topico = getLine("a topic pliss")
+	print "a key pliss"
+	key = newGetKey()
+	print "a topic pliss"
+	topico = getLine()
 	line =""
-	msg1 = getLine("a menssage pliss")
+	print "a menssage pliss"
+	msg1 = getLine()
 	while (msg1)!="":
 		line +=str(msg1)
 		msg1 = getLine()
 	#msg = getLine("a menssage pliss")
-	rate = getLine("a rate pliss")
+	print "a rate pliss"
+	rate = int(getLine())
+	#Crate = rospy.Rate(rate)
+	Crate = genpy.Time(rate,0)
 	msg_type = getLine("the type of the menssage pliss")
 	if dictio.has_key(key):
 		print "tecla asociada a otro boto, para cambiar, seleccion change"
@@ -107,13 +131,14 @@ def agregar(dictio):
 		import std_msgs.msg
 		keys = { 'now': now, 'auto': std_msgs.msg.Header(stamp=now) }
 		genpy.message.fill_message_args(msgx, aux_args, keys=keys)
-		newElement = [topico, msgx , rate ,msg_type]
+		newElement = [topico, msgx , Crate ,msg_type]
 		dictio[key] = newElement
 		print "new command agregado"
 	return dictio
 
 def borrar(dictio):
-	key = getkey("a key please")
+	print "a key please"
+	key = newGetKey()
 	if (dictio.has_key(key)):
 		del dictio[key]
 		print "key deleted successfully"
@@ -122,9 +147,11 @@ def borrar(dictio):
 	return dictio
 
 def modificar(dictio):
- 	old_key = getkey("select old key")
+	print "select old key"
+ 	old_key = newGetKey()
  	if (dictio.has_key(old_key)):
- 		new_key = getkey("select new key")
+ 		print "select new key"
+ 		new_key = newGetKey()
  		#look for
  		element = dictio[old_key]
 		del dictio[old_key]
