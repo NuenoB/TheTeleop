@@ -24,25 +24,27 @@ def newGetKey():
 def getkey(arg =""):
 	return input(arg)
 
-def getLine():
-	result = ""
-	next=1
-	while next:
-		settings = termios.tcgetattr(sys.stdin)
-		tty.setraw(sys.stdin.fileno())
-		#rlist, _, _ = select.select([sys.stdin], [], [], 5.0)#esperar
-		#if rlist:
-		key = sys.stdin.read(1)	
-		#else:
-		#	key = ''
-		#finally:
-		print key
-		result = result + key
-		if (key == ""):
-			next = 0
+# def getLine():
+# 	result = ""
+# 	next=1
+# 	while next:
+# 		settings = termios.tcgetattr(sys.stdin)
+# 		tty.setraw(sys.stdin.fileno())
+# 		#rlist, _, _ = select.select([sys.stdin], [], [], 5.0)#esperar
+# 		#if rlist:
+# 		key = sys.stdin.read(1)	
+# 		#else:
+# 		#	key = ''
+# 		#finally:
+# 		print key
+# 		result = result + key
+# 		if (key == ""):
+# 			next = 0
 
-	termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
-	return key
+# 	termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+# 	return key
+def getLine(arg=""):
+	return input(arg)
 
 
 def main():
@@ -50,7 +52,7 @@ def main():
 	rospy.init_node('The_Teleop')
 	print "welcome to teleop"
 	#robot_name = str(input("set robot"))
-	robot_name ="tes1"
+	robot_name ="test"
 	robot_setting = restore(robot_name) 
 	reconfig_key="r"
 	store_key ="s"
@@ -112,7 +114,7 @@ def agregar(dictio):
 	print "a menssage pliss"
 	msg1 = getLine()
 	while (msg1)!="":
-		line +=str(msg1)
+		line +=str(msg1)+"/n"
 		msg1 = getLine()
 	#msg = getLine("a menssage pliss")
 	print "a rate pliss"

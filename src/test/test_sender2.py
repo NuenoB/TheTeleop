@@ -15,7 +15,7 @@ def sender1(msg, reciver, msg_type):
 	pub = rospy.Publisher(reciver, msg_class , queue_size=0)
 	#rospy.loginfo(msg)
 	# type-case using YAML
-	pub_args = []
+	#pub_args = []
 	#msgg = var.split()
 	aux_args = yaml.load(var)
 	
