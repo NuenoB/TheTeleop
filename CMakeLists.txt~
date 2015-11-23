@@ -106,7 +106,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES rqt_the_teleop
+#  LIBRARIES rqt_TheTeleop
   CATKIN_DEPENDS rospy rqt_gui rqt_gui_py message_runtime
 #  DEPENDS system_lib
 )
@@ -123,24 +123,24 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(rqt_the_teleop
-#   src/${PROJECT_NAME}/rqt_the_teleop.cpp
+# add_library(rqt_TheTeleop
+#   src/${PROJECT_NAME}/rqt_TheTeleop.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(rqt_the_teleop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(rqt_TheTeleop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(rqt_the_teleop_node src/rqt_the_teleop_node.cpp)
+# add_executable(rqt_TheTeleop_node src/rqt_TheTeleop_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(rqt_the_teleop_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(rqt_TheTeleop_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(rqt_the_teleop_node
+# target_link_libraries(rqt_TheTeleop_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -159,7 +159,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS rqt_the_teleop rqt_the_teleop_node
+# install(TARGETS rqt_TheTeleop rqt_TheTeleop_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -184,7 +184,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_rqt_the_teleop.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_rqt_TheTeleop.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

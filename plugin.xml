@@ -1,5 +1,5 @@
 <library path="src">
-  <class name="TheTeleop" type="rqt_mypkg.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
+  <class name="the_teleop" type="the_teleop.TheTeleop.MyPlugin" base_class_type="rqt_gui_py::Plugin">
     <description>
       A teleop app that can you use for move different kinds of robot.
     </description>
@@ -12,7 +12,7 @@
         <label>Subgroup</label>
       </group>
       -->
-      <label>My first Python Plugin</label>
+      <label>TheTheleop</label>
       <icon type="theme">system-help</icon>
       <statustip>Great user interface to provide real value.</statustip>
     </qtgui>
