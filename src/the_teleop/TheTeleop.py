@@ -3,6 +3,7 @@ import os
 import rospy
 import rospkg
 
+from readbag import restore
 from qt_gui.plugin import Plugin
 
 from python_qt_binding.QtCore import Qt
@@ -10,8 +11,23 @@ from python_qt_binding import loadUi
 from python_qt_binding.QtGui import QFileDialog, QGraphicsView, QIcon, QWidget
 
 class MyPlugin(Plugin):
+
 	def pr(self, anda):
-		print "Zeratul esta vivo"
+		arg = input("inserte algo")
+		print arg
+	def getTab(self, e):
+		arg = self._widget.comboBox.currentText ()
+		print str(arg)
+
+	def getBags(self, bag_path):
+		list_bags = os.listdir(bag_path)
+		list_of_bag = []
+		for t in list_bags:
+			if ".bag" in t:
+				t = t.split('.')
+				list_of_bag.append(t[0])
+
+		return list_of_bag
 
 	def __init__(self, context):
 		super(MyPlugin, self).__init__(context)
@@ -45,9 +61,21 @@ class MyPlugin(Plugin):
 			self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
 		# Add widget to the user interface
 		context.add_widget(self._widget)
-		print self
-		self._widget.pushButton.clicked[bool].connect(self.pr)
-		self._widget.pushButton.clicked[bool].connect(self.pr)
+
+		#rospy.init_node('The_Teleop')
+		print "welcome to teleop"
+		#robot_name = str(input("set robot"))
+		robot_name ="/test"
+		bag_path = os.path.join(rospkg.RosPack().get_path('rqt_the_teleop'), 'src/the_teleop')
+		robot_setting = restore(bag_path + robot_name) 
+		print robot_setting
+		list_bags = self.getBags(bag_path)
+		#print list_bags
+
+		for b in list_bags:
+			self._widget.comboBox.addItem(b)
+
+		self._widget.LoadConfig.clicked[bool].connect(self.getTab)
 		self._widget.pushButton_2.clicked[bool].connect(self.pr)
 		self._widget.pushButton_3.clicked[bool].connect(self.pr)
 		self._widget.pushButton_4.clicked[bool].connect(self.pr)

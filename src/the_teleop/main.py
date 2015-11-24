@@ -1,8 +1,10 @@
 #! /usr/bin/env python
+
 from config_index import *
 from writebag import store
 from readbag import restore
 from sender import sender
+import os
 import roslib
 import roslib.message
 import rospy, tty, termios, sys, select
@@ -79,6 +81,8 @@ def main():
 			sender(msg, topic, msg_type) 
 		elif key=="e":
 			mantener=0
+		elif key=="u":
+			launch_gui();
 		else:
 			#if lookup fails
 			#insult the user
@@ -89,6 +93,7 @@ def lookup(dictio,key):
 	return val
 
 def reconfig(dictio):
+
 	print dictio
 	print "choose a option: a -> addCommand, c -> changeCommand, d->deleteComannd"
 	key = newGetKey()
@@ -162,5 +167,7 @@ def modificar(dictio):
 	else:
 		print "key undefined"
 	return dictio
+def launch_gui():
+	os.system('rqt --standalone the_teleop')
 
 main()
