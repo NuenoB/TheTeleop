@@ -9,6 +9,8 @@ from qt_gui.plugin import Plugin
 from python_qt_binding.QtCore import Qt
 from python_qt_binding import loadUi
 from python_qt_binding.QtGui import QFileDialog, QGraphicsView, QIcon, QWidget
+from PyQt4 import QtGui
+from example_ui import *
 
 class MyPlugin(Plugin):
 
@@ -75,6 +77,15 @@ class MyPlugin(Plugin):
 		for b in list_bags:
 			self._widget.comboBox.addItem(b)
 
+		horHeaders = []
+		for n, key in enumerate(sorted(data.keys())):
+			horHeaders.append(key)
+			for m, item in enumerate(data[key]):
+				newitem = QTableWidgetItem(item)
+				self._widget.elementsTable.setItem(m, n, newitem)
+
+		self._widget.elementsTable.setHorizontalHeaderLabels(horHeaders)
+		self._widget.elementsTable.show()
 		self._widget.LoadConfig.clicked[bool].connect(self.getTab)
 		self._widget.pushButton_2.clicked[bool].connect(self.pr)
 		self._widget.pushButton_3.clicked[bool].connect(self.pr)
