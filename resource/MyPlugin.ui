@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>540</width>
-    <height>444</height>
+    <height>527</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="ChangeCommand">
    <property name="geometry">
     <rect>
      <x>370</x>
@@ -26,7 +26,7 @@
     <string>Change Command</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="Add_Command">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -39,7 +39,7 @@
     <string>Add Command</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="Delete_Command">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -52,29 +52,6 @@
     <string>Delete Command</string>
    </property>
   </widget>
-  <widget class="QScrollArea" name="scrollArea">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>250</y>
-     <width>301</width>
-     <height>161</height>
-    </rect>
-   </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>299</width>
-      <height>159</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
@@ -85,7 +62,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="Add_Bag">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -98,7 +75,7 @@
     <string>Add Bag</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="Delete_Bag">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -136,6 +113,34 @@
    <property name="text">
     <string>Current Robot</string>
    </property>
+  </widget>
+  <widget class="QTreeWidget" name="elementsTable">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>260</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </column>
+   <item>
+    <property name="text">
+     <string>asdasd</string>
+    </property>
+    <property name="text">
+     <string>asdasdasd</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

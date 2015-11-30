@@ -9,7 +9,7 @@ from qt_gui.plugin import Plugin
 from python_qt_binding.QtCore import Qt
 from python_qt_binding import loadUi
 from python_qt_binding.QtGui import QFileDialog, QGraphicsView, QIcon, QWidget
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 from example_ui import *
 
 class MyPlugin(Plugin):
@@ -17,7 +17,7 @@ class MyPlugin(Plugin):
 	def pr(self, anda):
 		arg = input("inserte algo")
 		print arg
-	def getTab(self, e):
+	def getTab(self):
 		arg = self._widget.comboBox.currentText ()
 		print str(arg)
 
@@ -30,6 +30,8 @@ class MyPlugin(Plugin):
 				list_of_bag.append(t[0])
 
 		return list_of_bag
+
+	def newWindow(self,)
 
 	def __init__(self, context):
 		super(MyPlugin, self).__init__(context)
@@ -63,6 +65,16 @@ class MyPlugin(Plugin):
 			self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
 		# Add widget to the user interface
 		context.add_widget(self._widget)
+		
+		#test
+
+		        #tree_widget ROBOT
+		self._widget.elementsTable.setEditTriggers(self._widget.elementsTable.NoEditTriggers)
+
+		header_robot = self._widget.elementsTable.header()
+		header_robot.setResizeMode(QHeaderView.ResizeToContents) 
+		header_robot.setContextMenuPolicy(Qt.CustomContextMenu)
+
 
 		#rospy.init_node('The_Teleop')
 		print "welcome to teleop"
@@ -77,21 +89,18 @@ class MyPlugin(Plugin):
 		for b in list_bags:
 			self._widget.comboBox.addItem(b)
 
-		horHeaders = []
-		for n, key in enumerate(sorted(data.keys())):
-			horHeaders.append(key)
-			for m, item in enumerate(data[key]):
-				newitem = QTableWidgetItem(item)
-				self._widget.elementsTable.setItem(m, n, newitem)
+		# horHeaders = []
+		# for n, key in enumerate(sorted(data.keys())):
+		# 	horHeaders.append(key)
+		# 	for m, item in enumerate(data[key]):
+		# 		newitem = QTableWidgetItem(item)
+		# 		self._widget.elementsTable.setItem(m, n, newitem)
 
-		self._widget.elementsTable.setHorizontalHeaderLabels(horHeaders)
-		self._widget.elementsTable.show()
+		# self._widget.elementsTable.setHorizontalHeaderLabels(horHeaders)
+		# self._widget.elementsTable.show()
+ 
 		self._widget.LoadConfig.clicked[bool].connect(self.getTab)
-		self._widget.pushButton_2.clicked[bool].connect(self.pr)
-		self._widget.pushButton_3.clicked[bool].connect(self.pr)
-		self._widget.pushButton_4.clicked[bool].connect(self.pr)
-		self._widget.pushButton_5.clicked[bool].connect(self.pr)
-
+		self._widget.Add_Bag.clicked[bool].connect(self.pr)
 
 	def shutdown_plugin(self):
 	    # TODO unregister all publishers here
