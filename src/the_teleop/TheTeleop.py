@@ -11,6 +11,7 @@ from python_qt_binding import loadUi
 from python_qt_binding.QtGui import QFileDialog, QGraphicsView, QIcon, QWidget
 from PyQt4 import QtGui, QtCore
 from example_ui import *
+from test_popout.py import *
 
 class MyPlugin(Plugin):
 

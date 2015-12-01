@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'AddBag.ui'
 #
-# Created: Mon Nov 30 10:24:59 2015
+# Created: Tue Dec  1 14:57:54 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,29 +23,29 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Form2(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(243, 210)
-        self.label = QtGui.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(50, 30, 121, 17))
+class Ui_addbag(object):
+    def setupUi(self, addbag):
+        addbag.setObjectName(_fromUtf8("addbag"))
+        addbag.resize(306, 285)
+        self.label = QtGui.QLabel(addbag)
+        self.label.setGeometry(QtCore.QRect(90, 50, 121, 17))
         self.label.setObjectName(_fromUtf8("label"))
-        self.lineEdit = QtGui.QLineEdit(Form)
-        self.lineEdit.setGeometry(QtCore.QRect(60, 60, 113, 27))
+        self.lineEdit = QtGui.QLineEdit(addbag)
+        self.lineEdit.setGeometry(QtCore.QRect(90, 100, 113, 27))
         self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
-        self.pushButton = QtGui.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(10, 140, 98, 27))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.pushButton_2 = QtGui.QPushButton(Form)
-        self.pushButton_2.setGeometry(QtCore.QRect(120, 140, 98, 27))
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.add_bag_cancel = QtGui.QPushButton(addbag)
+        self.add_bag_cancel.setGeometry(QtCore.QRect(40, 200, 98, 27))
+        self.add_bag_cancel.setObjectName(_fromUtf8("add_bag_cancel"))
+        self.create_new_bag = QtGui.QPushButton(addbag)
+        self.create_new_bag.setGeometry(QtCore.QRect(160, 200, 98, 27))
+        self.create_new_bag.setObjectName(_fromUtf8("create_new_bag"))
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(addbag)
+        QtCore.QMetaObject.connectSlotsByName(addbag)
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
-        self.label.setText(_translate("Form", "Insert New Robot", None))
-        self.pushButton.setText(_translate("Form", "Cancel", None))
-        self.pushButton_2.setText(_translate("Form", "Create", None))
+    def retranslateUi(self, addbag):
+        addbag.setWindowTitle(_translate("addbag", "Dialog", None))
+        self.label.setText(_translate("addbag", "Insert New Robot", None))
+        self.add_bag_cancel.setText(_translate("addbag", "Cancel", None))
+        self.create_new_bag.setText(_translate("addbag", "Create", None))
 

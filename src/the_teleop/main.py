@@ -124,9 +124,11 @@ def agregar(dictio):
 	#msg = getLine("a menssage pliss")
 	print "a rate pliss"
 	rate = int(getLine())
-	#Crate = rospy.Rate(rate)
-	Crate = genpy.Time(rate,0)
 	msg_type = getLine("the type of the menssage pliss")
+	agregar(dictio,key, topico, line, rate, msg_type)
+	
+def agregar(dictio, key, topico, line, rate, msg_type):
+	Crate = genpy.Time(rate,0)
 	if dictio.has_key(key):
 		print "tecla asociada a otro boto, para cambiar, seleccion change"
 	else:
@@ -170,4 +172,4 @@ def modificar(dictio):
 def launch_gui():
 	os.system('rqt --standalone the_teleop')
 
-main()
+#main()
