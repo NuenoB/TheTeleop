@@ -37,17 +37,35 @@ class Form1(QtGui.QWidget, Ui_Form):
         self.ChangeCommand.clicked[bool].connect(self.ChangeCommandWindow)
         self.Delete_Command.clicked[bool].connect(self.handle_delete_command)
     
+    def  load_commands(self):
+        self.elementsTable.clear()
+        items={}
+        i = 0
+        cs = self.current_setting 
+        for key in cs.keys():
+            items[i] = QTreeWidgetItem(self.elementsTable)
+            items[i].setText(0, key)
+            items[i].setText(1, cs[key][topic_index])
+            items[i].setText(2, str(cs[key][msg_index]))
+            items[i].setText(3, cs[key][type_index])
+
+            items[i].setText(4, str(cs[key][rate_index].to_nsec() % 100000 ))
+            i=i+1
+
+        
     def get_setting(self):
         self.current_bag = self.comboBox.currentText()
         robot_name = self.current_bag
         robot_setting = restore(bag_path + robot_name)
-        self.current_setting = robot_setting 
+        self.current_setting = robot_setting
+        self.load_commands()
 
     def load_bags(self):
         list_bags = self.getBags(bag_path)
         self.comboBox.clear()
         for b in list_bags:
             self.comboBox.addItem(b)
+
 
     def handleButton(self):
         self.window2 = Form2()
@@ -56,21 +74,23 @@ class Form1(QtGui.QWidget, Ui_Form):
 
     def auto_save(self):
         store(self.current_setting, bag_path + self.current_bag)
+        self.load_commands()
 
 
     def AddCommandWindow(self):
-        self.window2 = Form3(self.comboBox.currentText())
+        self.window2 = Form3(self.current_bag, self.current_setting)
         self.window2.exec_()
+        self.current_setting = self.window2.setting
         self.auto_save()
 
     def ChangeCommandWindow(self):
-        self.window2 = Form4(self.comboBox.currentText(),self.current_setting)
+        self.window2 = Form4(self.current_bag,self.current_setting)
         self.window2.exec_()
         self.current_setting = self.window2.setting
         self.auto_save()
 
     def handle_delete_command(self):
-        self.window2 = Form5(self.comboBox.currentText(),self.current_setting)
+        self.window2 = Form5(self.current_bag,self.current_setting)
         self.window2.exec_()
         self.current_setting = self.window2.setting
         self.auto_save()
@@ -105,19 +125,17 @@ class Form2(QDialog, Ui_addbag):
         self.close()
 
 class Form3(QDialog, Ui_AddCommandDialog):
-    def __init__(self, name_bag ,parent=None):
+    def __init__(self, name_bag ,current_setting ,parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
         self.name_bag = name_bag
+        self.setting = current_setting
         self.cancel_add.clicked.connect(self.handle_close_windows)
         self.correct_add.clicked.connect(self.handle_add_command)
 
     def handle_add_command(self):
-        dict1 = {}
-        dict1 = agregar(dict1, self.add_key.text(), self.add_topic.text(), self.add_msj.toPlainText(), int(self.add_rate.text()),self.add_type.text())
-        print dict1
-        print self.name_bag
-        #writebag()
+        self.setting = agregar(self.setting, self.add_key.text(), self.add_topic.text(), self.add_msj.toPlainText(), int(self.add_rate.text()),self.add_type.text())
+        self.close()
 
     def handle_close_windows(self):
         self.close()
@@ -132,7 +150,7 @@ class Form4(QDialog, Ui_Changue_Command):
         self.name_bag = name_bag
         self.setting = setting
         self.load_init()
-        ##self.load_init()
+        ##self.load_init() load all the bananas
         self.cancel_command.clicked.connect(self.handle_close_windows)
         self.change_command.clicked.connect(self.handle_change_command)
 

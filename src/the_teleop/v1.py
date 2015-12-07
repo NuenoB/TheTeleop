@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MyPlugin.ui'
 #
-# Created: Mon Nov 30 09:22:43 2015
+# Created: Mon Dec  7 14:39:24 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(540, 527)
+        Form.resize(554, 527)
         self.ChangeCommand = QtGui.QPushButton(Form)
         self.ChangeCommand.setGeometry(QtCore.QRect(370, 180, 131, 27))
         self.ChangeCommand.setObjectName(_fromUtf8("ChangeCommand"))
@@ -52,9 +52,8 @@ class Ui_Form(object):
         self.label.setGeometry(QtCore.QRect(160, 20, 101, 20))
         self.label.setObjectName(_fromUtf8("label"))
         self.elementsTable = QtGui.QTreeWidget(Form)
-        self.elementsTable.setGeometry(QtCore.QRect(140, 260, 256, 192))
+        self.elementsTable.setGeometry(QtCore.QRect(40, 260, 461, 192))
         self.elementsTable.setObjectName(_fromUtf8("elementsTable"))
-        item_0 = QtGui.QTreeWidgetItem(self.elementsTable)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -68,11 +67,9 @@ class Ui_Form(object):
         self.Delete_Bag.setText(_translate("Form", "Delete Bag", None))
         self.LoadConfig.setText(_translate("Form", "Load Robot", None))
         self.label.setText(_translate("Form", "Current Robot", None))
-        self.elementsTable.headerItem().setText(0, _translate("Form", "1", None))
-        self.elementsTable.headerItem().setText(1, _translate("Form", "2", None))
-        __sortingEnabled = self.elementsTable.isSortingEnabled()
-        self.elementsTable.setSortingEnabled(False)
-        self.elementsTable.topLevelItem(0).setText(0, _translate("Form", "asdasd", None))
-        self.elementsTable.topLevelItem(0).setText(1, _translate("Form", "asdasdasd", None))
-        self.elementsTable.setSortingEnabled(__sortingEnabled)
+        self.elementsTable.headerItem().setText(0, _translate("Form", "Hotkey", None))
+        self.elementsTable.headerItem().setText(1, _translate("Form", "Topic", None))
+        self.elementsTable.headerItem().setText(2, _translate("Form", "Message", None))
+        self.elementsTable.headerItem().setText(3, _translate("Form", "Type", None))
+        self.elementsTable.headerItem().setText(4, _translate("Form", "Rate", None))
 

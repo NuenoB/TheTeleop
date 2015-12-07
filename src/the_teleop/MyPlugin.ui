@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
+    <width>554</width>
     <height>527</height>
    </rect>
   </property>
@@ -117,30 +117,37 @@
   <widget class="QTreeWidget" name="elementsTable">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>40</x>
      <y>260</y>
-     <width>256</width>
+     <width>461</width>
      <height>192</height>
     </rect>
    </property>
    <column>
     <property name="text">
-     <string>1</string>
+     <string>Hotkey</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>2</string>
+     <string>Topic</string>
     </property>
    </column>
-   <item>
+   <column>
     <property name="text">
-     <string>asdasd</string>
+     <string>Message</string>
     </property>
+   </column>
+   <column>
     <property name="text">
-     <string>asdasdasd</string>
+     <string>Type</string>
     </property>
-   </item>
+   </column>
+   <column>
+    <property name="text">
+     <string>Rate</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>
