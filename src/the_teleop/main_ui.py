@@ -2,12 +2,13 @@
 
 # Form implementation generated from reading ui file 'MyPlugin.ui'
 #
-# Created: Wed Dec  9 12:53:11 2015
+# Created: Wed Dec  9 13:23:49 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from QLineEdit_keyDetecter import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,7 +27,7 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(554, 527)
+        Form.resize(554, 611)
         self.ChangeCommand = QtGui.QPushButton(Form)
         self.ChangeCommand.setGeometry(QtCore.QRect(370, 180, 131, 27))
         self.ChangeCommand.setObjectName(_fromUtf8("ChangeCommand"))
@@ -54,6 +55,12 @@ class Ui_Form(object):
         self.elementsTable = QtGui.QTreeWidget(Form)
         self.elementsTable.setGeometry(QtCore.QRect(40, 260, 461, 192))
         self.elementsTable.setObjectName(_fromUtf8("elementsTable"))
+        self.key_presser = QLineEdit_keyDetecter_messegerSender(Form)
+        self.key_presser.setGeometry(QtCore.QRect(210, 540, 113, 27))
+        self.key_presser.setObjectName(_fromUtf8("key_presser"))
+        self.label_2 = QtGui.QLabel(Form)
+        self.label_2.setGeometry(QtCore.QRect(180, 500, 181, 20))
+        self.label_2.setObjectName(_fromUtf8("label_2"))
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -72,4 +79,5 @@ class Ui_Form(object):
         self.elementsTable.headerItem().setText(2, _translate("Form", "Message", None))
         self.elementsTable.headerItem().setText(3, _translate("Form", "Type", None))
         self.elementsTable.headerItem().setText(4, _translate("Form", "Rate", None))
+        self.label_2.setText(_translate("Form", "Press key to send message", None))
 

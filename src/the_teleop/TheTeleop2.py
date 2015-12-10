@@ -5,6 +5,7 @@ import rospkg
 
 from readbag import restore
 from qt_gui.plugin import Plugin
+from sender import sender
 
 from python_qt_binding.QtCore import Qt
 from python_qt_binding import loadUi
@@ -12,11 +13,12 @@ from python_qt_binding.QtGui import QFileDialog, QGraphicsView, QIcon, QWidget
 from PyQt4 import QtGui, QtCore
 from example_ui import *
 from PyQt4 import QtGui
-from v1 import Ui_Form
+from main_ui import Ui_Form
 from v2 import Ui_addbag
 from v3 import Ui_AddCommandDialog
 from v4 import Ui_Changue_Command
 from v5 import Ui_delete_command
+from confirm import Ui_Confirm
 from main import *
 from writebag import *
 
@@ -27,6 +29,7 @@ class Form1(QtGui.QWidget, Ui_Form):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
+        rospy.init_node('the_teleop_UI', anonymous=True)
         self.current_setting = 0
         self.current_bag = 0
         self.load_bags()
@@ -36,6 +39,8 @@ class Form1(QtGui.QWidget, Ui_Form):
         self.Add_Command.clicked[bool].connect(self.AddCommandWindow)
         self.ChangeCommand.clicked[bool].connect(self.ChangeCommandWindow)
         self.Delete_Command.clicked[bool].connect(self.handle_delete_command)
+        self.Delete_Bag.clicked[bool].connect(self.handle_Delete_Bag)
+        print "yo mismo" + str(self)
     
     def  load_commands(self):
         self.elementsTable.clear()
@@ -48,11 +53,17 @@ class Form1(QtGui.QWidget, Ui_Form):
             items[i].setText(1, cs[key][topic_index])
             items[i].setText(2, str(cs[key][msg_index]))
             items[i].setText(3, cs[key][type_index])
-
             items[i].setText(4, str(cs[key][rate_index].to_nsec() % 100000 ))
             i=i+1
 
-        
+    def handle_Delete_Bag(self):
+        self.window2 = form_confirm_delete_bag(self.current_bag)
+        self.window2.exec_()
+        if self.window2.delete==1:
+            os.remove(bag_path + self.current_bag + ".bag" )
+            self.load_bags()
+            self.get_setting()
+
     def get_setting(self):
         self.current_bag = self.comboBox.currentText()
         robot_name = self.current_bag
@@ -104,6 +115,17 @@ class Form1(QtGui.QWidget, Ui_Form):
                 list_of_bag.append(t[0])
         return list_of_bag
 
+    def msjsend(self, key):
+        print "sending menssage" + str(key)
+        self.current_setting
+        if key in self.current_setting:
+            val = lookup(self.current_setting,key)
+            topic = val[topic_index]
+            msg = val[msg_index]
+            msg_type = val[type_index]
+            sender(msg, topic, msg_type)
+        else:
+            print "No existe ese boton"
 
 class Form2(QDialog, Ui_addbag):
     def __init__(self, parent=None):
@@ -198,6 +220,23 @@ class Form5(QDialog, Ui_delete_command):
         self.load_init()
 
     def handle_close_windows(self):
+        self.close()
+
+class form_confirm_delete_bag(QDialog, Ui_Confirm):
+    def __init__(self, name_bag, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+        self.setupUi(self)
+        self.name_bag = name_bag
+        self.delete=0
+        self.label.setText("Are you sure you want to delete this bag:\n "+ self.name_bag)
+        self.yes.clicked.connect(self.handle_yes)
+        self.no.clicked.connect(self.handle_no)
+
+    def handle_yes(self):
+        self.delete=1
+        self.close()
+
+    def handle_no(self):
         self.close()
 
 

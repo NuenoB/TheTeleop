@@ -1,65 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>delete_command</class>
- <widget class="QDialog" name="delete_command">
+ <class>Confirm</class>
+ <widget class="QDialog" name="Confirm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>185</width>
-    <height>194</height>
+    <width>308</width>
+    <height>130</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QComboBox" name="currents_commands">
+  <widget class="QPushButton" name="yes">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>50</y>
-     <width>78</width>
-     <height>27</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="delete_boton">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
+     <x>30</x>
      <y>90</y>
      <width>98</width>
      <height>27</height>
     </rect>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Yes</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="close_windows">
+  <widget class="QPushButton" name="no">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>130</y>
+     <x>160</x>
+     <y>90</y>
      <width>98</width>
      <height>27</height>
     </rect>
    </property>
    <property name="text">
-    <string>Exit</string>
+    <string>No</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>20</y>
-     <width>111</width>
-     <height>17</height>
+     <width>281</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
-    <string>Select to delete</string>
+    <string/>
    </property>
   </widget>
  </widget>

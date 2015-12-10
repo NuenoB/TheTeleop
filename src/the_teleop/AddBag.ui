@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>306</width>
-    <height>285</height>
+    <width>231</width>
+    <height>177</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>50</y>
+     <x>50</x>
+     <y>20</y>
      <width>121</width>
      <height>17</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>100</y>
+     <x>50</x>
+     <y>50</y>
      <width>113</width>
      <height>27</height>
     </rect>
@@ -39,8 +39,8 @@
   <widget class="QPushButton" name="add_bag_cancel">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>200</y>
+     <x>10</x>
+     <y>110</y>
      <width>98</width>
      <height>27</height>
     </rect>
@@ -52,8 +52,8 @@
   <widget class="QPushButton" name="create_new_bag">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>200</y>
+     <x>120</x>
+     <y>110</y>
      <width>98</width>
      <height>27</height>
     </rect>

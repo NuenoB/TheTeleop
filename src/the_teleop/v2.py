@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'AddBag.ui'
 #
-# Created: Tue Dec  1 14:57:54 2015
+# Created: Thu Dec 10 11:24:37 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,18 +26,18 @@ except AttributeError:
 class Ui_addbag(object):
     def setupUi(self, addbag):
         addbag.setObjectName(_fromUtf8("addbag"))
-        addbag.resize(306, 285)
+        addbag.resize(231, 177)
         self.label = QtGui.QLabel(addbag)
-        self.label.setGeometry(QtCore.QRect(90, 50, 121, 17))
+        self.label.setGeometry(QtCore.QRect(50, 20, 121, 17))
         self.label.setObjectName(_fromUtf8("label"))
         self.lineEdit = QtGui.QLineEdit(addbag)
-        self.lineEdit.setGeometry(QtCore.QRect(90, 100, 113, 27))
+        self.lineEdit.setGeometry(QtCore.QRect(50, 50, 113, 27))
         self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
         self.add_bag_cancel = QtGui.QPushButton(addbag)
-        self.add_bag_cancel.setGeometry(QtCore.QRect(40, 200, 98, 27))
+        self.add_bag_cancel.setGeometry(QtCore.QRect(10, 110, 98, 27))
         self.add_bag_cancel.setObjectName(_fromUtf8("add_bag_cancel"))
         self.create_new_bag = QtGui.QPushButton(addbag)
-        self.create_new_bag.setGeometry(QtCore.QRect(160, 200, 98, 27))
+        self.create_new_bag.setGeometry(QtCore.QRect(120, 110, 98, 27))
         self.create_new_bag.setObjectName(_fromUtf8("create_new_bag"))
 
         self.retranslateUi(addbag)
