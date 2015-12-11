@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>GerenalTheleop</class>
+ <widget class="QWidget" name="GerenalTheleop">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -72,7 +72,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Add Bag</string>
+    <string>Add Robot</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Delete_Bag">
@@ -85,7 +85,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Delete Bag</string>
+    <string>Delete Robot</string>
    </property>
   </widget>
   <widget class="QPushButton" name="LoadConfig">

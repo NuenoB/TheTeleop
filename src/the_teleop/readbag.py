@@ -17,7 +17,7 @@ def restore(name_bag = "test"):
 	#print bag.get_type_and_topic_info()
 	lmsg = dict()
 	trios  = bag.read_messages()
-	rospy.loginfo(bag.get_message_count())
+	#rospy.loginfo(bag.get_message_count())
 	#for topic, msg, t in bag.read_messages():
 	#	print msg
 	while True:
@@ -39,5 +39,5 @@ def restore(name_bag = "test"):
 
 
 	bag.close()
-	print len(lmsg)
+	#print len(lmsg)
 	return lmsg

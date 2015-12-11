@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from QLineEdit_keyDetecter import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -36,7 +37,7 @@ class Ui_Changue_Command(object):
         self.currents_commands = QtGui.QComboBox(Changue_Command)
         self.currents_commands.setGeometry(QtCore.QRect(20, 50, 101, 27))
         self.currents_commands.setObjectName(_fromUtf8("currents_commands"))
-        self.new_command = QtGui.QLineEdit(Changue_Command)
+        self.new_command = QLineEdit_keyDetecter(Changue_Command)
         self.new_command.setGeometry(QtCore.QRect(140, 50, 113, 27))
         self.new_command.setObjectName(_fromUtf8("new_command"))
         self.label = QtGui.QLabel(Changue_Command)

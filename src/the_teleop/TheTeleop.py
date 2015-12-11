@@ -11,6 +11,7 @@ from python_qt_binding import loadUi
 from python_qt_binding.QtGui import QFileDialog, QGraphicsView, QIcon, QWidget
 from PyQt4 import QtGui, QtCore
 from example_ui import *
+from TheTeleop2 import *
 
 class MyPlugin(Plugin):
 
@@ -31,7 +32,6 @@ class MyPlugin(Plugin):
 
 		return list_of_bag
 
-	def newWindow(self,)
 
 	def __init__(self, context):
 		super(MyPlugin, self).__init__(context)
@@ -49,20 +49,22 @@ class MyPlugin(Plugin):
 
 		# Create QWidget
 		#print "i am alive"
-		self._widget = QWidget()
+
+		#self._widget = QWidget()
+		self._widget = Form1()
 		# Get path to UI file which should be in the "resource" folder of this package
-		ui_file = os.path.join(rospkg.RosPack().get_path('rqt_the_teleop'), 'resource', 'MyPlugin.ui')
+		#ui_file = os.path.join(rospkg.RosPack().get_path('rqt_the_teleop'), 'resource', 'MyPlugin.ui')
 		# Extend the widget with all attributes and children from UI file
-		loadUi(ui_file, self._widget)
+		#loadUi(ui_file, self._widget)
 		# Give QObjects reasonable names
-		self._widget.setObjectName('MyPluginUi')
+		#self._widget.setObjectName('MyPluginUi')
 		# Show _widget.windowTitle on left-top of each plugin (when 
 		# it's set in _widget). This is useful when you open multiple 
 		# plugins at once. Also if you open multiple instances of your 
 		# plugin at once, these lines add number to make it easy to 
 		# tell from pane to pane.
-		if context.serial_number() > 1:
-			self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
+		#if context.serial_number() > 1:
+		#	self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
 		# Add widget to the user interface
 		context.add_widget(self._widget)
 		
@@ -76,31 +78,6 @@ class MyPlugin(Plugin):
 		header_robot.setContextMenuPolicy(Qt.CustomContextMenu)
 
 
-		#rospy.init_node('The_Teleop')
-		print "welcome to teleop"
-		#robot_name = str(input("set robot"))
-		robot_name ="/test"
-		bag_path = os.path.join(rospkg.RosPack().get_path('rqt_the_teleop'), 'src/the_teleop')
-		robot_setting = restore(bag_path + robot_name) 
-		print robot_setting
-		list_bags = self.getBags(bag_path)
-		#print list_bags
-
-		for b in list_bags:
-			self._widget.comboBox.addItem(b)
-
-		# horHeaders = []
-		# for n, key in enumerate(sorted(data.keys())):
-		# 	horHeaders.append(key)
-		# 	for m, item in enumerate(data[key]):
-		# 		newitem = QTableWidgetItem(item)
-		# 		self._widget.elementsTable.setItem(m, n, newitem)
-
-		# self._widget.elementsTable.setHorizontalHeaderLabels(horHeaders)
-		# self._widget.elementsTable.show()
- 
-		self._widget.LoadConfig.clicked[bool].connect(self.getTab)
-		self._widget.Add_Bag.clicked[bool].connect(self.pr)
 
 	def shutdown_plugin(self):
 	    # TODO unregister all publishers here

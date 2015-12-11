@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from QLineEdit_keyDetecter import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -33,7 +34,7 @@ class Ui_AddCommandDialog(object):
         self.cancel_add = QtGui.QPushButton(AddCommandDialog)
         self.cancel_add.setGeometry(QtCore.QRect(50, 300, 98, 27))
         self.cancel_add.setObjectName(_fromUtf8("cancel_add"))
-        self.add_key = QtGui.QLineEdit(AddCommandDialog)
+        self.add_key = QLineEdit_keyDetecter(AddCommandDialog)
         self.add_key.setGeometry(QtCore.QRect(140, 40, 113, 27))
         self.add_key.setObjectName(_fromUtf8("add_key"))
         self.add_topic = QtGui.QLineEdit(AddCommandDialog)

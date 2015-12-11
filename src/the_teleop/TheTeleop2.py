@@ -4,7 +4,7 @@ import rospy
 import rospkg
 
 from readbag import restore
-from qt_gui.plugin import Plugin
+#from qt_gui.plugin import plugin
 from sender import sender
 
 from python_qt_binding.QtCore import Qt
@@ -29,7 +29,8 @@ class Form1(QtGui.QWidget, Ui_Form):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
-        rospy.init_node('the_teleop_UI', anonymous=True)
+        self.setWindowTitle('General Teleop')
+        #rospy.init_node('the_teleop_UI', anonymous=True)
         self.current_setting = 0
         self.current_bag = 0
         self.load_bags()
@@ -40,8 +41,7 @@ class Form1(QtGui.QWidget, Ui_Form):
         self.ChangeCommand.clicked[bool].connect(self.ChangeCommandWindow)
         self.Delete_Command.clicked[bool].connect(self.handle_delete_command)
         self.Delete_Bag.clicked[bool].connect(self.handle_Delete_Bag)
-        print "yo mismo" + str(self)
-    
+ 
     def  load_commands(self):
         self.elementsTable.clear()
         items={}
@@ -131,6 +131,7 @@ class Form2(QDialog, Ui_addbag):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.setWindowTitle('Add robot')
         self.create_new_bag.clicked.connect(self.handle_create)
         self.add_bag_cancel.clicked.connect(self.handle_close_windows)
 
@@ -150,6 +151,7 @@ class Form3(QDialog, Ui_AddCommandDialog):
     def __init__(self, name_bag ,current_setting ,parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.setWindowTitle('Add command')
         self.name_bag = name_bag
         self.setting = current_setting
         self.cancel_add.clicked.connect(self.handle_close_windows)
@@ -167,8 +169,9 @@ class Form4(QDialog, Ui_Changue_Command):
 
     def __init__(self,name_bag,setting,parent=None):
         QtGui.QWidget.__init__(self, parent)
-        self.setting=0
         self.setupUi(self)
+        self.setWindowTitle('Add command')
+        self.setting=0
         self.name_bag = name_bag
         self.setting = setting
         self.load_init()
@@ -203,6 +206,7 @@ class Form5(QDialog, Ui_delete_command):
     def __init__(self,name_bag,setting,parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.setWindowTitle('Delete command')
         self.setting=setting
         self.name_bag=name_bag
         self.load_init()
@@ -226,9 +230,10 @@ class form_confirm_delete_bag(QDialog, Ui_Confirm):
     def __init__(self, name_bag, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.setWindowTitle('Confirm delete')
         self.name_bag = name_bag
         self.delete=0
-        self.label.setText("Are you sure you want to delete this bag:\n "+ self.name_bag)
+        self.label.setText("Are you sure you want to delete this robot:\n "+ self.name_bag)
         self.yes.clicked.connect(self.handle_yes)
         self.no.clicked.connect(self.handle_no)
 
